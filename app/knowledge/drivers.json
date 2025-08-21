@@ -1,0 +1,10 @@
+{
+  "_comment": "Driver knowledge base for RAG",
+  "drivers": {
+    "daniel_suarez": {
+      "name": "Daniel Suárez",
+      "car_number": "1",
+      "team": "Trackhouse Racing"
+    }
+  }
+}
