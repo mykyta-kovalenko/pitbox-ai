@@ -1,0 +1,22 @@
+{
+  "version": 1,
+  "dependencies": ["."],
+  "env": ".env",
+  "python_version": "3.13",
+  "graphs": {
+    "simple_pitbox": "app.graphs.simple_pitbox:graph",
+    "analytics_agent": "app.graphs.analytics_agent:graph"
+  },
+  "assistants": {
+    "pitbox": {
+      "graph_id": "simple_pitbox",
+      "name": "NASCAR Pit Box AI",
+      "description": "Voice-driven NASCAR assistant for pit box operations."
+    },
+    "analytics": {
+      "graph_id": "analytics_agent",
+      "name": "NASCAR Analytics Agent", 
+      "description": "Advanced analytics for race strategy and performance insights."
+    }
+  }
+}

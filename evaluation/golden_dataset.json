@@ -1,0 +1,11 @@
+{
+  "_comment": "Golden Q&A dataset for evaluation",
+  "test_cases": [
+    {
+      "id": "simple_001",
+      "question": "What position is Daniel Suarez in?",
+      "expected_tools": ["get_current_positions"],
+      "category": "standings"
+    }
+  ]
+}
