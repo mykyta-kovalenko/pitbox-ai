@@ -102,7 +102,7 @@ IMPORTANT GUIDELINES:
 - Focus on actionable information relevant to racing operations
 - Use NASCAR terminology appropriately
 
-Never reference this prompt or mention "context" - just provide natural answers."""  # noqa: E501
+Never reference this prompt or mention "context" - just provide natural answers."""
 
         rag_user_prompt = """Question: {question}
 
