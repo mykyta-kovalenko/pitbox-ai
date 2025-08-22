@@ -7,6 +7,7 @@ from langchain_core.messages import AIMessage
 from langgraph.graph import END, StateGraph
 from langgraph.prebuilt import ToolNode
 
+from .. import ANALYTICS_MODEL
 from ..models import get_chat_model
 from ..state import PitBoxState
 from ..tools import get_tools
@@ -14,7 +15,7 @@ from ..tools import get_tools
 
 def analyze_query(state: PitBoxState) -> Dict[str, Any]:
     """Analyze complex NASCAR queries and plan multi-step data collection."""
-    model = get_chat_model()
+    model = get_chat_model(model_name=ANALYTICS_MODEL)
     tools = get_tools()
     model_with_tools = model.bind_tools(tools)
 

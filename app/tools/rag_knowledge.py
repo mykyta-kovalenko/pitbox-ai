@@ -20,7 +20,7 @@ from ..models import get_chat_model
 class NASCARKnowledgeRAG:
     """Production RAG chain with retrieval + generation"""
 
-    def __init__(self, llm_model: str = "gpt-4o-mini"):
+    def __init__(self, llm_model: str = "gpt-4.1-mini"):
         self.knowledge_path = KNOWLEDGE_BASE_PATH
         self.llm_model = llm_model
         self.embeddings = OpenAIEmbeddings(model="text-embedding-3-small")

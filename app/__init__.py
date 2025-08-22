@@ -12,7 +12,8 @@ ENVIRONMENT = os.getenv("ENVIRONMENT", "development")
 OPENAI_API_KEY = os.getenv("OPENAI_API_KEY")
 
 # Model configuration
-DEFAULT_MODEL = os.getenv("OPENAI_MODEL", "gpt-4-turbo-preview")
+DEFAULT_MODEL = os.getenv("OPENAI_MODEL", "gpt-4.1-mini")
+ANALYTICS_MODEL = os.getenv("ANALYTICS_MODEL", "gpt-5-mini")
 DEFAULT_TEMP = float(os.getenv("MODEL_TEMPERATURE", "0.1"))
 
 # Simulator configuration

@@ -17,8 +17,14 @@ quality: lint
 test:
 	uv run python -m pytest tests/ -v
 
+test-unit:
+	uv run python -m pytest tests/ -v --ignore=tests/integration
+
+test-integration:
+	uv run python -m pytest tests/integration/ -v
+
 test-rag:
-	uv run python tests/test_rag_knowledge.py
+	uv run python tests/integration/test_rag_knowledge.py
 
 # Development setup
 install:
@@ -44,7 +50,9 @@ help:
 	@echo "  lint-fix  - Auto-fix linting issues"
 	@echo "  quality   - Check code quality (lint + format check)"
 	@echo "  test      - Run all tests"
-	@echo "  test-rag  - Run RAG tests specifically"
+	@echo "  test-unit - Run unit tests only"
+	@echo "  test-integration - Run integration tests only"
+	@echo "  test-rag  - Run RAG integration tests specifically"
 	@echo "  check     - Run quality + tests"
 	@echo "  watch     - Watch files and run ruff on changes"
 	@echo "  install   - Install dependencies"
