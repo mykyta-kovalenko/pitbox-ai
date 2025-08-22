@@ -1,0 +1,194 @@
+# NASCAR Terminology and Rules Glossary
+
+## Technical Terms and Car Setup
+
+### Camber
+The amount a tire is tilted in or out from vertical. Described in degrees, either positive or negative. Camber adjustments affect how the tire contacts the track surface and influences handling characteristics.
+
+### Downforce
+A combination of aerodynamic and centrifugal forces that help "plant" a race car to the ground. The more downforce, the more grip a car has. But more downforce also means more drag, which can rob a race car of speed.
+
+### Drag
+The resistance a car experiences when passing through air at high speeds. A resisting force exerted on a car parallel to its air stream and opposite in direction to its motion.
+
+### Splitter
+Runs the entire width of the car at the front and sometimes appears as if it's touching the ground. What the spoiler does for downforce in the back of the car, the splitter provides downforce to the front. Damage to the splitter can be difficult to overcome because of the important role it plays in the aerodynamics of the car.
+
+### Spoiler
+A metal blade attached to the rear deck lid of the car. It helps restrict airflow over the rear of the car, providing downforce and traction.
+
+### Tapered Spacer
+A metal piece that limits how much air gets into the engine cylinder, which in turn limits how much fuel can go into the cylinder and reduces the amount of energy produced.
+
+### Track Bar
+A lateral bar that keeps the rear tires centered within the body of the car. It connects the frame on one side and the rear axle on the other. Changes to the track bar settings affect the weight distribution of the car and how it moves through the corners on the track. Also called the panhard bar. This is referred to in the Xfinity and Truck Series.
+
+### Round of Wedge
+Slang term for a way of making chassis adjustments utilizing the race car's springs. A wrench is inserted in a jack bolt attached to the springs, and it is used to tighten or loosen the amount of play in the spring. This in turn can loosen or tighten up the handling of a race car.
+
+### Quarter Panel
+The sheet metal on both sides of the car from the C-post to the rear bumper below the deck lid and above the wheel well.
+
+## Driving and Racing Terms
+
+### Loose
+Also known as "oversteer." When the rear tires of the car have trouble sticking in the corners. This causes the car to "fishtail" as the rear end swings outward during turns. A minor amount of this effect can be desirable on certain tracks.
+
+### Tight
+Also known as "understeer." A car is said to be tight if the front wheels lose traction before the rear wheels do. A tight race car doesn't seem able to steer sharply enough through the turns. Instead, the front end continues toward the wall.
+
+### Groove
+Slang term for the best route around the race track; the most efficient or quickest way around the track for a particular driver. The "high groove" takes a car closer to the outside wall for most of a lap, while the "low groove" takes a car closer to the apron than the outside wall. Road racers use the term "line." Drivers search for a fast groove, and that has been known to change depending on track and weather conditions.
+
+### Drafting
+The practice of two or more cars, while racing, to run nose-to-tail, almost touching. The lead car, by displacing the air in front of it, creates a vacuum between its rear end and the nose of the following car, actually pulling the second car along with it.
+
+### Side Drafting
+When a car races alongside another car and "dumps" airflow from that car's nose to the spoiler of the other car, causing the other car to lose momentum and allowing the side-drafting car to pull away. It's a strategy used on larger tracks such as Talladega, Daytona and Michigan.
+
+### Slingshot
+A maneuver in which a car following the leader in a draft suddenly steers around it, breaking the vacuum; this can provide an extra burst of speed that allows the second car to take the lead.
+
+### Slide Job
+This is more common in dirt racing but does occur in NASCAR. It is a maneuver where one car uses the low line around the turn and allows their car to slide up in front of the car taking the high line while completing the pass and blocking the car in the high line from crossing over.
+
+### Dirty Air
+Aerodynamic term for the turbulent air currents caused by fast-moving cars that can cause a particular car to lose control or find difficulty in passing.
+
+## Race Operations and Procedures
+
+### Choose Rule
+Refers to the rule where drivers can choose their lane for a restart. This is not in place for the initial start.
+
+### Pit Road
+Where teams service the race cars. This is where teams make adjustments on the car, fuel stops, tire changes and fix damage to the race cars. Pit road has specific speed limits that must be observed.
+
+### Short Pit
+The strategy of pitting well before running out of fuel, getting fresh tires to make up time on the front-runners and theoretically taking the lead once those lead cars need to pit. Short pitting puts a car on an alternate pit cycle and could be beneficial or not depending in part upon how cautions fall the rest of the race.
+
+### Wave Around
+Lapped cars that do not pit during a regular yellow-flag pit cycle are allowed to take a "wave around" past the pace car once the one-to-go signal is given during that caution period. This procedure ensures that lead-lap cars restart at the front of the field. Wave-around cars restart at the rear of the field, but they are placed in front of cars that have received a penalty.
+
+### NASCAR Overtime
+This occurs when a race goes past its scheduled length due to a caution coming out in the closing laps necessitating an overtime finish. The overtime finish consists of two laps and can be attempted as many times as needed. Typically, when the cars take the white flag, there will be no more overtime attempts made. This used to be referred to as a green-white-checkered finish.
+
+### Tower
+Short for race control tower, it's the term used by racing officials and teams in radio communications to address the NASCAR race director for a given event. Fans, teams and spotters listening on the race officials' scanner channel will hear frequent references to "tower" for race control.
+
+### Team Rosters
+This refers to the roster of team personnel permitted to be at each event.
+
+## Track Types and Characteristics
+
+### Superspeedways
+Tracks that are 2.5 miles and bigger and feature more drafting and pack racing. On the current schedule those are Daytona International Speedway and Talladega Superspeedway. Pocono Raceway is also considered a superspeedway based on its length, although tighter, flatter corners eliminate pack racing.
+
+### Intermediate Tracks
+These tracks are typically 1.5 miles to 2 miles long, though some like Darlington and Nashville are a little smaller. On the current schedule, these tracks are: Atlanta Motor Speedway, Charlotte Motor Speedway (oval), Darlington Raceway, Kansas Speedway, Las Vegas Motor Speedway, Homestead-Miami Speedway, Michigan International Speedway, Nashville Superspeedway and Texas Motor Speedway.
+
+### Short Tracks
+Tracks that are under 1 mile in length. On the current schedule those are: Bristol Motor Speedway, Dover Motor Speedway, Iowa Speedway, Martinsville Speedway, New Hampshire Motor Speedway, Phoenix Raceway and Richmond Raceway.
+
+### Road Courses
+A track layout that includes left and right turns. These vary in length, and the ones on the NASCAR circuit range from 1.99 miles to just over 4 miles in length. On the current schedule, these tracks are: Autodromo Hermanos Rodriguez, Charlotte Motor Speedway Roval, Chicago Street Course, Circuit of the Americas, Sonoma Raceway and Watkins Glen International.
+
+### SAFER Barrier
+The Steel and Foam Energy Reduction barrier system — SAFER, for short — is an impact-absorbing wall of welded steel tubing backed by foam. The majority of tracks where NASCAR national series compete have SAFER barriers lining the retaining walls as a safety measure, designed to reduce the energy of crashes.
+
+## Race Structure and Scoring
+
+### Stage Racing
+Each race is typically comprised of three stages (Stage 1, Stage 2 and the Final Stage; the Coca-Cola 600 has four stages). Each stage has a length before it ends. Only the Final Stage will see a NASCAR Overtime finish. Stage winners earn playoff points and regular season points.
+
+### Pole Position
+Refers to the driver who will be starting first in the race. The drivers starting first and second make up the front row.
+
+### Place Differential
+Refers to the difference in position from a driver's starting spot to their finish. Positions gained is a common term used as well and usually refers to the number of spots a driver has gained after a restart at a particular point in the race.
+
+### Playoff Points
+These are awarded to drivers for stage wins and race wins. Top-10 finishers in the regular-season standings also receive playoff points on a sliding scale (15 for 1st, 10 for 2nd, 8 for 3rd, 7 for 4th … down to 1 for 10th). Drivers carry playoff points through the different rounds until the Championship 4.
+
+## NASCAR Series Information
+
+### National Series
+NASCAR has three national series — the NASCAR Cup Series, NASCAR Xfinity Series and NASCAR Craftsman Truck Series.
+
+### Next Gen
+This refers to the new car that the NASCAR Cup Series began using in 2022.
+
+### Rules Package
+Refers to the setup of the car at a given track. The main mark of differentiation is the horsepower, 670 vs. 510. The 670 horsepower setup is used at all tracks except for superspeedways and Atlanta Motor Speedway, where the 510 horsepower setup is utilized.
+
+### Touring Series
+The sanctioning body has Touring Series that are more regionally centric such as the ARCA Menards Series, ARCA Menards Series West, ARCA Menards Series East, NASCAR Advance Auto Parts Weekly Series, NASCAR Canada Series, NASCAR Mexico Series, NASCAR Whelen Euro Series and the NASCAR Whelen Modified Tour.
+
+## Flag Meanings
+
+### Green Flag
+Has four primary purposes when it waves: during qualifying and practice sessions, indicates the start of a race, racing continues under full-speed conditions, and also when a race transitions from a yellow caution period/flag back to full-speed restart conditions. Green means GO!
+
+### Yellow Flag
+Brings the race to a slowed pace and indicates a caution period on-track due to a crash or debris that would impede the race from continuing under full-speed conditions. When the flag waves, the pace car enters the track and controls the field behind it.
+
+### Red Flag
+Means the race must immediately come to a halt. Cars must either stop where they are at on the track, or are brought to pit road due either to extensive on-track debris that must be cleaned up following a crash, or when weather forces racing to stop.
+
+### Black Flag
+Typically is directed toward a particular driver who NASCAR officials or scorers have determined has committed an on-track offense — or cannot maintain a consistent and competitive speed to continue racing — and must leave the racing surface and return to the pit area immediately. Also called a "consultation flag."
+
+### White Flag
+Indicates there is just one lap remaining in the race. If a caution period occurs on the final lap while the white flag is displayed, the field is frozen and the event ends immediately.
+
+### Checkered Flag (Black and White)
+The race is over when this flag flies. Each car remaining on the track must cross the start-finish line and pass under the checkered flag to have its finishing position officially scored.
+
+### Blue Flag with Yellow Diagonal Stripe
+Is used to alert one or more cars that leaders or a pack of lead lap cars are approaching and to either move over or be courteous, particularly if they are likely to be passed shortly.
+
+## Points System
+
+Race winners receive 40 points, with point values decreasing deeper into the finishing order. Stage winners earn additional bonus points. Drivers finishing first through 10th in both Stage 1 and Stage 2 earn bonus points. The stage winner is awarded 10 points, the second-highest driver earns 9 points, down to the 10th-place finisher, who earns one additional bonus point.
+
+### How Points Are Awarded Per Race
+1st place: 40 points
+2nd place: 35 points
+3rd place: 34 points
+[Points decrease by 1 for each position through 6th place]
+7th place: 30 points
+[Points decrease by 1 for each position through 36th place]
+37th-40th place: 1 point each
+
+## Playoff System
+
+For all three NASCAR national series, there are a series of eliminations as the NASCAR Playoffs progress. This culminates in the series finales, where the Championship 4 drivers race "straight-up" for the title — the first to cross the line of the four championship-eligible drivers is crowned the champion.
+
+### Cup Series Playoffs
+16 drivers, four rounds. Playoffs begin at Darlington Raceway. Elimination races where four drivers are eliminated: Bristol Motor Speedway, Charlotte Motor Speedway Roval, and Martinsville Speedway.
+
+### Xfinity Series Playoffs  
+12 drivers, three rounds. Playoffs begin at Bristol Motor Speedway. Elimination races where four drivers are eliminated: Charlotte Motor Speedway Roval and Martinsville Speedway.
+
+### Truck Series Playoffs
+10 drivers, three rounds. Playoffs begin at Darlington Raceway. Elimination races: New Hampshire Motor Speedway (two drivers eliminated) and Martinsville Speedway (four drivers eliminated).
+
+## Special Programs
+
+### Dash 4 Cash (Xfinity Series)
+A midseason program where top finisher of four eligible competitors wins $100,000 payout. The winner and next three highest-finishing Xfinity Series drivers qualify for the next event. Sponsored by Xfinity.
+
+### Triple Truck Challenge
+A series of races in the NASCAR Craftsman Truck Series designed to give attention to series regulars with added incentive given to race wins. Drivers compete for additional bonus money, with potential earnings up to $500,000 for sweeping all races.
+
+## Broadcasting and Media
+
+NASCAR Cup Series races are broadcast across multiple networks including FOX, FS1, Prime Video, TNT Sports, USA, and NBC throughout the season. The CW is the exclusive broadcast home for the NASCAR Xfinity Series. The NASCAR Craftsman Truck Series airs on FS1 and FOX networks.
+
+## Historic Records
+
+NASCAR's extensive history spans back to 1948. Notable all-time records include:
+- Most wins: 200 by Richard Petty
+- Most pole positions: 123 by Richard Petty  
+- Most championships: 7 by Dale Earnhardt, Jimmie Johnson and Richard Petty
+- Most road-course wins: 9 by Jeff Gordon
+- Most restrictor-plate wins: 12 by Jeff Gordon
