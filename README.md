@@ -18,6 +18,20 @@ app/
     ├── nascar_glossary.txt    # NASCAR terminology and rules
     └── nascar_tracks.txt      # Track information and history
 
+mcp_server/              # MCP (Model Context Protocol) server
+├── server.py            # Main MCP server with FastMCP
+├── requirements.txt     # MCP server dependencies
+└── tools/               # Modularized MCP tools
+    ├── __init__.py         # Tool exports
+    ├── utils.py            # Common utilities and API client
+    ├── system_status.py    # System health and vehicle monitoring
+    ├── car_data.py         # Car positions, ranks, and lap times
+    ├── pit_stop.py         # Pit events, times, and tire data
+    ├── race_status.py      # Flags, laps, grid, and track info
+    ├── content.py          # Driver and team information
+    ├── telemetry.py        # Telemetry channel definitions
+    └── analysis.py         # Race leader and strategy analysis
+
 evaluation/              # Evaluation and testing
 ├── golden_dataset.json   # Q&A pairs for validation
 └── eval_harness.py       # Automated evaluation
