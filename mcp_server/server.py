@@ -1,7 +1,6 @@
 """TrackHouse MCP Server - Integrated with edge_server/web_server."""
 
 import argparse
-import asyncio
 import sys
 from pathlib import Path
 
@@ -11,15 +10,32 @@ from fastmcp import FastMCP
 sys.path.append(str(Path(__file__).parent.parent))
 
 # Import all tools
-from tools import (analyze_pit_strategy, analyze_race_leader,
-                   check_system_health, compare_lap_times, get_all_drivers,
-                   get_all_flags, get_all_laps, get_all_positions,
-                   get_average_lap_time, get_best_lap_time, get_car_position,
-                   get_car_rank, get_current_flag, get_current_lap,
-                   get_driver_info, get_lap_time, get_pit_events,
-                   get_pit_times, get_starting_grid, get_team_info,
-                   get_telemetry_channels, get_tire_data, get_track_info,
-                   get_vehicle_id)
+from tools import (
+    analyze_pit_strategy,
+    analyze_race_leader,
+    check_system_health,
+    compare_lap_times,
+    get_all_drivers,
+    get_all_flags,
+    get_all_laps,
+    get_all_positions,
+    get_average_lap_time,
+    get_best_lap_time,
+    get_car_position,
+    get_car_rank,
+    get_current_flag,
+    get_current_lap,
+    get_driver_info,
+    get_lap_time,
+    get_pit_events,
+    get_pit_times,
+    get_starting_grid,
+    get_team_info,
+    get_telemetry_channels,
+    get_tire_data,
+    get_track_info,
+    get_vehicle_id,
+)
 from tools.utils import WEB_SERVER_URL
 
 # Initialize FastMCP server
@@ -183,9 +199,11 @@ def create_mcp_server() -> FastMCP:
     return mcp
 
 
-def print_server_info(transport: str = "stdio", host: str = "127.0.0.1", port: int = 8000):
+def print_server_info(
+    transport: str = "stdio", host: str = "127.0.0.1", port: int = 8000
+):
     """Print server information and available tools.
-    
+
     Args:
         transport: Transport type - 'stdio' (default) or 'http'
         host: Host for HTTP transport
@@ -198,32 +216,48 @@ def print_server_info(transport: str = "stdio", host: str = "127.0.0.1", port: i
     if transport == "http":
         print(f"Endpoint: http://{host}:{port}")
     print(f"Connecting to web server at: {WEB_SERVER_URL}")
-    
+
     # Note: Can't test connection here since it's not async
     print("\nNote: Web server connection will be tested when tools are called")
-    
+
     print("\n" + "=" * 60)
     print("Available MCP Tools:")
     print("=" * 60)
-    
+
     # List categories of tools
     tools = {
         "System": ["check_system_health", "get_vehicle_id"],
-        "Car Data": ["get_car_position", "get_all_positions", "get_car_rank", 
-                    "get_lap_time", "get_best_lap_time", "get_average_lap_time"],
+        "Car Data": [
+            "get_car_position",
+            "get_all_positions",
+            "get_car_rank",
+            "get_lap_time",
+            "get_best_lap_time",
+            "get_average_lap_time",
+        ],
         "Pit Stops": ["get_pit_events", "get_pit_times", "get_tire_data"],
-        "Race Status": ["get_current_flag", "get_all_flags", "get_current_lap", 
-                       "get_all_laps", "get_starting_grid", "get_track_info"],
+        "Race Status": [
+            "get_current_flag",
+            "get_all_flags",
+            "get_current_lap",
+            "get_all_laps",
+            "get_starting_grid",
+            "get_track_info",
+        ],
         "Content": ["get_driver_info", "get_all_drivers", "get_team_info"],
         "Telemetry": ["get_telemetry_channels"],
-        "Analysis": ["analyze_race_leader", "analyze_pit_strategy", "compare_lap_times"]
+        "Analysis": [
+            "analyze_race_leader",
+            "analyze_pit_strategy",
+            "compare_lap_times",
+        ],
     }
-    
+
     for category, tool_list in tools.items():
         print(f"\n{category}:")
         for tool in tool_list:
             print(f"  • {tool}")
-    
+
     print("\n" + "=" * 60)
     print(f"MCP server is ready for connections via {transport.upper()}!")
     print("=" * 60)
@@ -235,25 +269,22 @@ if __name__ == "__main__":
         "--transport",
         choices=["stdio", "http"],
         default="stdio",
-        help="Transport method (default: stdio)"
+        help="Transport method (default: stdio)",
     )
     parser.add_argument(
         "--host",
         default="127.0.0.1",
-        help="Host for HTTP transport (default: 127.0.0.1)"
+        help="Host for HTTP transport (default: 127.0.0.1)",
     )
     parser.add_argument(
-        "--port",
-        type=int,
-        default=8000,
-        help="Port for HTTP transport (default: 8000)"
+        "--port", type=int, default=8000, help="Port for HTTP transport (default: 8000)"
     )
-    
+
     args = parser.parse_args()
-    
+
     # Print server info
     print_server_info(transport=args.transport, host=args.host, port=args.port)
-    
+
     if args.transport == "http":
         mcp.run(transport="http", host=args.host, port=args.port)
     else:

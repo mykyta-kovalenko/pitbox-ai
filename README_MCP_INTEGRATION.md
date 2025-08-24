@@ -63,18 +63,6 @@ Environment variables for MCP integration:
 - `MCP_HOST`: Host for HTTP transport (default: '127.0.0.1')
 - `MCP_PORT`: Port for HTTP transport (default: 8000)
 
-## Testing
-
-Run the integration test:
-```bash
-python test_mcp_integration.py
-```
-
-This verifies:
-1. MCP tools are discovered
-2. Tools can be executed
-3. Agents can use the tools
-
 ## Benefits
 
 1. **Zero Agent Changes**: Existing agents automatically get MCP tools
@@ -91,15 +79,6 @@ If MCP tools aren't loading:
    ```bash
    python mcp_server/server.py
    ```
-
-2. **Try HTTP transport**:
-   ```bash
-   python mcp_server/server.py --transport http
-   export MCP_TRANSPORT=http
-   python test_mcp_integration.py
-   ```
-
-3. **Check logs** for connection errors in the agent output
 
 ## How Agents Use MCP Tools
 
