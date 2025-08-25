@@ -1,1 +1,758 @@
-<!-- TODO: Likely to be replaced with Next.js app -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Trackhouse Racing - Pit Box AI</title>
+    
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        @keyframes slideIn {
+            from {
+                transform: translateX(-100%);
+                opacity: 0;
+            }
+            to {
+                transform: translateX(0);
+                opacity: 1;
+            }
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+        }
+
+        @keyframes checkeredFlag {
+            0% { background-position: 0 0; }
+            100% { background-position: 40px 40px; }
+        }
+
+        @keyframes typing {
+            0%, 20%, 40%, 60%, 80%, 100% {
+                opacity: 0;
+                transform: translateY(0);
+            }
+            10%, 30%, 50%, 70%, 90% {
+                opacity: 1;
+                transform: translateY(-2px);
+            }
+        }
+
+        body {
+            font-family: 'Helvetica Neue', Arial, sans-serif;
+            background: linear-gradient(135deg, #0a0a0a 0%, #1a1a1a 100%);
+            color: #fff;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            overflow-x: hidden;
+        }
+
+        /* Header */
+        .header {
+            background: linear-gradient(90deg, #000 0%, #ff0000 50%, #000 100%);
+            background-size: 200% 100%;
+            animation: pulse 3s ease-in-out infinite;
+            padding: 1rem 2rem;
+            box-shadow: 0 4px 20px rgba(255, 0, 0, 0.3);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: repeating-linear-gradient(
+                90deg,
+                transparent,
+                transparent 10px,
+                rgba(255, 255, 255, 0.05) 10px,
+                rgba(255, 255, 255, 0.05) 20px
+            );
+            pointer-events: none;
+        }
+
+        .header-content {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            max-width: 1200px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 1;
+        }
+
+        .logo-section {
+            display: flex;
+            align-items: center;
+            gap: 1.5rem;
+        }
+
+        .logo {
+            width: 60px;
+            height: 60px;
+            background: #ff0000;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            font-size: 1.5rem;
+            border: 3px solid #fff;
+            box-shadow: 0 0 20px rgba(255, 0, 0, 0.5);
+            animation: pulse 2s ease-in-out infinite;
+        }
+
+        .title {
+            font-size: 2rem;
+            font-weight: 900;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+        }
+
+        .subtitle {
+            font-size: 0.9rem;
+            opacity: 0.9;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+        }
+
+        .status-indicator {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.5rem 1rem;
+            background: rgba(0, 255, 0, 0.1);
+            border: 1px solid #00ff00;
+            border-radius: 20px;
+        }
+
+        .status-dot {
+            width: 10px;
+            height: 10px;
+            background: #00ff00;
+            border-radius: 50%;
+            animation: pulse 1s ease-in-out infinite;
+            box-shadow: 0 0 10px #00ff00;
+        }
+
+        /* Main Container */
+        .main-container {
+            flex: 1;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 2rem;
+        }
+
+        .chat-container {
+            width: 100%;
+            max-width: 900px;
+            height: 600px;
+            background: rgba(26, 26, 26, 0.95);
+            border-radius: 20px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+            border: 2px solid #ff0000;
+            display: flex;
+            flex-direction: column;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .chat-container::before {
+            content: '';
+            position: absolute;
+            top: -2px;
+            left: -2px;
+            right: -2px;
+            bottom: -2px;
+            background: linear-gradient(45deg, #ff0000, #000, #ff0000, #000);
+            border-radius: 20px;
+            z-index: -1;
+            opacity: 0.5;
+            animation: pulse 3s ease-in-out infinite;
+        }
+
+        /* Chat Header */
+        .chat-header {
+            background: linear-gradient(90deg, #1a1a1a, #2a2a2a);
+            padding: 1.5rem;
+            border-bottom: 2px solid #ff0000;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .chat-title {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .chat-icon {
+            width: 40px;
+            height: 40px;
+            background: #ff0000;
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+        }
+
+        .racing-flags {
+            display: flex;
+            gap: 0.5rem;
+        }
+
+        .flag {
+            width: 30px;
+            height: 20px;
+            border-radius: 3px;
+        }
+
+        .flag.checkered {
+            background: repeating-conic-gradient(#000 0deg 90deg, #fff 90deg 180deg);
+            background-size: 10px 10px;
+            animation: checkeredFlag 2s linear infinite;
+        }
+
+        .flag.green {
+            background: #00ff00;
+        }
+
+        .flag.yellow {
+            background: #ffff00;
+        }
+
+        .flag.red {
+            background: #ff0000;
+        }
+
+        /* Messages Area */
+        .messages-area {
+            flex: 1;
+            overflow-y: auto;
+            padding: 1.5rem;
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+            background: repeating-linear-gradient(
+                0deg,
+                transparent,
+                transparent 40px,
+                rgba(255, 0, 0, 0.02) 40px,
+                rgba(255, 0, 0, 0.02) 41px
+            );
+        }
+
+        .message {
+            animation: slideIn 0.3s ease-out;
+            display: flex;
+            gap: 1rem;
+            max-width: 80%;
+        }
+
+        .message.user {
+            align-self: flex-end;
+            flex-direction: row-reverse;
+        }
+
+        .message-avatar {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            flex-shrink: 0;
+        }
+
+        .message.ai .message-avatar {
+            background: linear-gradient(135deg, #ff0000, #ff6600);
+            border: 2px solid #fff;
+        }
+
+        .message.user .message-avatar {
+            background: linear-gradient(135deg, #333, #555);
+            border: 2px solid #999;
+        }
+
+        .message-content {
+            background: rgba(40, 40, 40, 0.9);
+            padding: 1rem 1.5rem;
+            border-radius: 15px;
+            position: relative;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+        }
+
+        .message.ai .message-content {
+            background: linear-gradient(135deg, rgba(255, 0, 0, 0.1), rgba(255, 102, 0, 0.1));
+            border: 1px solid rgba(255, 0, 0, 0.3);
+        }
+
+        .message.user .message-content {
+            background: rgba(60, 60, 60, 0.9);
+            border: 1px solid rgba(100, 100, 100, 0.3);
+        }
+
+        .message-text {
+            line-height: 1.6;
+            word-wrap: break-word;
+        }
+
+        .typing-indicator {
+            display: flex;
+            gap: 4px;
+            padding: 1rem;
+        }
+
+        .typing-dot {
+            width: 8px;
+            height: 8px;
+            background: #ff0000;
+            border-radius: 50%;
+            animation: typing 1.4s infinite;
+        }
+
+        .typing-dot:nth-child(2) {
+            animation-delay: 0.2s;
+        }
+
+        .typing-dot:nth-child(3) {
+            animation-delay: 0.4s;
+        }
+
+        /* Input Area */
+        .input-area {
+            background: linear-gradient(90deg, #1a1a1a, #2a2a2a);
+            padding: 1.5rem;
+            border-top: 2px solid #ff0000;
+            display: flex;
+            gap: 1rem;
+        }
+
+        .input-wrapper {
+            flex: 1;
+            position: relative;
+        }
+
+        .message-input {
+            width: 100%;
+            padding: 1rem 1.5rem;
+            background: rgba(40, 40, 40, 0.9);
+            border: 2px solid #333;
+            border-radius: 25px;
+            color: #fff;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+        }
+
+        .message-input:focus {
+            outline: none;
+            border-color: #ff0000;
+            background: rgba(50, 50, 50, 0.9);
+            box-shadow: 0 0 20px rgba(255, 0, 0, 0.2);
+        }
+
+        .message-input::placeholder {
+            color: #666;
+        }
+
+        .send-button {
+            padding: 1rem 2rem;
+            background: linear-gradient(135deg, #ff0000, #ff6600);
+            border: none;
+            border-radius: 25px;
+            color: #fff;
+            font-weight: bold;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(255, 0, 0, 0.3);
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .send-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(255, 0, 0, 0.5);
+        }
+
+        .send-button:active {
+            transform: translateY(0);
+        }
+
+        .send-button:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+        }
+
+        /* Welcome Screen */
+        .welcome-screen {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.95);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            z-index: 1000;
+            animation: fadeIn 0.5s ease-out;
+        }
+
+        .welcome-content {
+            text-align: center;
+            padding: 2rem;
+            max-width: 600px;
+        }
+
+        .welcome-logo {
+            width: 120px;
+            height: 120px;
+            background: linear-gradient(135deg, #ff0000, #ff6600);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 3rem;
+            font-weight: bold;
+            margin: 0 auto 2rem;
+            border: 5px solid #fff;
+            box-shadow: 0 0 40px rgba(255, 0, 0, 0.5);
+            animation: pulse 2s ease-in-out infinite;
+        }
+
+        .welcome-title {
+            font-size: 3rem;
+            font-weight: 900;
+            text-transform: uppercase;
+            margin-bottom: 1rem;
+            background: linear-gradient(90deg, #fff, #ff0000, #fff);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            animation: pulse 3s ease-in-out infinite;
+        }
+
+        .welcome-subtitle {
+            font-size: 1.2rem;
+            color: #999;
+            margin-bottom: 3rem;
+        }
+
+        .start-button {
+            padding: 1.5rem 3rem;
+            background: linear-gradient(135deg, #ff0000, #ff6600);
+            border: none;
+            border-radius: 50px;
+            color: #fff;
+            font-size: 1.2rem;
+            font-weight: bold;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            cursor: pointer;
+            box-shadow: 0 10px 30px rgba(255, 0, 0, 0.5);
+            transition: all 0.3s ease;
+        }
+
+        .start-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 40px rgba(255, 0, 0, 0.7);
+        }
+
+        /* Scrollbar */
+        .messages-area::-webkit-scrollbar {
+            width: 10px;
+        }
+
+        .messages-area::-webkit-scrollbar-track {
+            background: rgba(0, 0, 0, 0.3);
+            border-radius: 5px;
+        }
+
+        .messages-area::-webkit-scrollbar-thumb {
+            background: #ff0000;
+            border-radius: 5px;
+        }
+
+        .messages-area::-webkit-scrollbar-thumb:hover {
+            background: #ff6600;
+        }
+
+        /* Mobile Responsive */
+        @media (max-width: 768px) {
+            .header-content {
+                flex-direction: column;
+                gap: 1rem;
+            }
+
+            .title {
+                font-size: 1.5rem;
+            }
+
+            .chat-container {
+                height: 80vh;
+                margin: 1rem;
+            }
+
+            .message {
+                max-width: 95%;
+            }
+
+            .welcome-title {
+                font-size: 2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="header-content">
+            <div class="logo-section">
+                <div class="logo">TH</div>
+                <div>
+                    <h1 class="title">Trackhouse Racing</h1>
+                    <p class="subtitle">Pit Box AI Assistant</p>
+                </div>
+            </div>
+            <div class="status-indicator">
+                <div class="status-dot"></div>
+                <span>SYSTEM ONLINE</span>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Container -->
+    <main class="main-container">
+        <div class="chat-container">
+            <!-- Welcome Screen -->
+            <div class="welcome-screen" id="welcomeScreen">
+                <div class="welcome-content">
+                    <div class="welcome-logo">🏁</div>
+                    <h2 class="welcome-title">Pit Box AI</h2>
+                    <p class="welcome-subtitle">Your NASCAR Intelligence Assistant</p>
+                    <button class="start-button" onclick="startChat()">Start Your Engines</button>
+                </div>
+            </div>
+
+            <!-- Chat Header -->
+            <div class="chat-header">
+                <div class="chat-title">
+                    <div class="chat-icon">💬</div>
+                    <div>
+                        <h3>Pit Box Assistant</h3>
+                        <small style="opacity: 0.7">Powered by Trackhouse Racing</small>
+                    </div>
+                </div>
+                <div class="racing-flags">
+                    <div class="flag green"></div>
+                    <div class="flag yellow"></div>
+                    <div class="flag checkered"></div>
+                    <div class="flag red"></div>
+                </div>
+            </div>
+
+            <!-- Messages Area -->
+            <div class="messages-area" id="messagesArea">
+                <!-- Messages will be added here dynamically -->
+            </div>
+
+            <!-- Input Area -->
+            <div class="input-area">
+                <div class="input-wrapper">
+                    <input 
+                        type="text" 
+                        class="message-input" 
+                        id="messageInput"
+                        placeholder="Ask about NASCAR, racing strategies, or Trackhouse..."
+                        onkeypress="handleKeyPress(event)"
+                        disabled
+                    >
+                </div>
+                <button class="send-button" id="sendButton" onclick="sendMessage()" disabled>
+                    <span>SEND</span>
+                    <span>🏎️</span>
+                </button>
+            </div>
+        </div>
+    </main>
+
+    <script>
+        const API_URL = 'http://localhost:8765';
+        let isTyping = false;
+
+        function startChat() {
+            const welcomeScreen = document.getElementById('welcomeScreen');
+            welcomeScreen.style.display = 'none';
+            
+            // Enable input and button
+            document.getElementById('messageInput').disabled = false;
+            document.getElementById('sendButton').disabled = false;
+            
+            // Add welcome message
+            addMessage('ai', 'Welcome to Pit Box AI! I\'m your NASCAR intelligence assistant. Ask me anything about racing, strategies, drivers, teams, or Trackhouse Racing!');
+            
+            // Focus on input
+            document.getElementById('messageInput').focus();
+        }
+
+        function handleKeyPress(event) {
+            if (event.key === 'Enter' && !event.shiftKey) {
+                event.preventDefault();
+                sendMessage();
+            }
+        }
+
+        async function sendMessage() {
+            const input = document.getElementById('messageInput');
+            const sendButton = document.getElementById('sendButton');
+            const message = input.value.trim();
+            
+            if (!message || isTyping) return;
+            
+            // Add user message
+            addMessage('user', message);
+            
+            // Clear input and disable while processing
+            input.value = '';
+            input.disabled = true;
+            sendButton.disabled = true;
+            isTyping = true;
+            
+            // Show typing indicator
+            showTypingIndicator();
+            
+            try {
+                const response = await fetch(`${API_URL}/chat`, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({ message: message })
+                });
+                
+                if (!response.ok) {
+                    throw new Error('Network response was not ok');
+                }
+                
+                const data = await response.json();
+                
+                // Remove typing indicator
+                hideTypingIndicator();
+                
+                // Add AI response
+                addMessage('ai', data.response);
+                
+            } catch (error) {
+                console.error('Error:', error);
+                hideTypingIndicator();
+                addMessage('ai', 'Sorry, I encountered an error. Please make sure the backend server is running on port 8765.');
+            } finally {
+                // Re-enable input
+                input.disabled = false;
+                sendButton.disabled = false;
+                isTyping = false;
+                input.focus();
+            }
+        }
+
+        function addMessage(sender, text) {
+            const messagesArea = document.getElementById('messagesArea');
+            
+            const messageDiv = document.createElement('div');
+            messageDiv.className = `message ${sender}`;
+            
+            const avatarDiv = document.createElement('div');
+            avatarDiv.className = 'message-avatar';
+            avatarDiv.textContent = sender === 'ai' ? '🏁' : '👤';
+            
+            const contentDiv = document.createElement('div');
+            contentDiv.className = 'message-content';
+            
+            const textDiv = document.createElement('div');
+            textDiv.className = 'message-text';
+            textDiv.textContent = text;
+            
+            contentDiv.appendChild(textDiv);
+            messageDiv.appendChild(avatarDiv);
+            messageDiv.appendChild(contentDiv);
+            
+            messagesArea.appendChild(messageDiv);
+            messagesArea.scrollTop = messagesArea.scrollHeight;
+        }
+
+        function showTypingIndicator() {
+            const messagesArea = document.getElementById('messagesArea');
+            
+            const typingDiv = document.createElement('div');
+            typingDiv.id = 'typingIndicator';
+            typingDiv.className = 'message ai';
+            
+            const avatarDiv = document.createElement('div');
+            avatarDiv.className = 'message-avatar';
+            avatarDiv.textContent = '🏁';
+            
+            const contentDiv = document.createElement('div');
+            contentDiv.className = 'message-content';
+            
+            const indicatorDiv = document.createElement('div');
+            indicatorDiv.className = 'typing-indicator';
+            
+            for (let i = 0; i < 3; i++) {
+                const dot = document.createElement('div');
+                dot.className = 'typing-dot';
+                indicatorDiv.appendChild(dot);
+            }
+            
+            contentDiv.appendChild(indicatorDiv);
+            typingDiv.appendChild(avatarDiv);
+            typingDiv.appendChild(contentDiv);
+            
+            messagesArea.appendChild(typingDiv);
+            messagesArea.scrollTop = messagesArea.scrollHeight;
+        }
+
+        function hideTypingIndicator() {
+            const indicator = document.getElementById('typingIndicator');
+            if (indicator) {
+                indicator.remove();
+            }
+        }
+
+        // Check API connection on load
+        window.addEventListener('load', async () => {
+            try {
+                const response = await fetch(`${API_URL}/health`);
+                if (!response.ok) {
+                    console.warn('API server may not be running');
+                }
+            } catch (error) {
+                console.warn('Could not connect to API server at', API_URL);
+            }
+        });
+    </script>
+</body>
+</html>
