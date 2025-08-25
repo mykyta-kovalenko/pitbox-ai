@@ -4,11 +4,11 @@ import os
 from typing import List
 
 from langchain_community.document_loaders import TextLoader
-from langchain_community.vectorstores import Qdrant
 from langchain_core.prompts import ChatPromptTemplate
 from langchain_core.runnables.passthrough import RunnablePassthrough
 from langchain_core.tools import BaseTool, tool
 from langchain_openai import OpenAIEmbeddings
+from langchain_qdrant import QdrantVectorStore
 from langchain_text_splitters import RecursiveCharacterTextSplitter
 from qdrant_client import QdrantClient
 from qdrant_client.http.models import Distance, VectorParams
@@ -73,10 +73,10 @@ class NASCARKnowledgeRAG:
         )
 
         # Create vector store
-        self.vectorstore = Qdrant(
+        self.vectorstore = QdrantVectorStore(
             client=client,
             collection_name="nascar_knowledge",
-            embeddings=self.embeddings,
+            embedding=self.embeddings,
         )
 
         # Add documents
