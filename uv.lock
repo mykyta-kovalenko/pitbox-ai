@@ -940,6 +940,20 @@ wheels = [
 ]
 
 [[package]]
+name = "langchain-qdrant"
+version = "0.2.0"
+source = { registry = "https://pypi.org/simple" }
+dependencies = [
+    { name = "langchain-core" },
+    { name = "pydantic" },
+    { name = "qdrant-client" },
+]
+sdist = { url = "https://files.pythonhosted.org/packages/f2/8c/f006636b4cc2d95ba072a57df3f2f99d8cf7cb47a79cc447a7e3e391f7ee/langchain_qdrant-0.2.0.tar.gz", hash = "sha256:41b8573cbb1b4706f76dc769251d8e6b3e4107ecd5fa97c58141977ec19fba75", size = 21429, upload-time = "2024-11-05T20:51:15.122Z" }
+wheels = [
+    { url = "https://files.pythonhosted.org/packages/68/01/22dad84373ba282237a3351547443c9c94c39fe75f71a1759f97cfa89725/langchain_qdrant-0.2.0-py3-none-any.whl", hash = "sha256:8eab5b8a553204ddb809d8183a6f1bc12fc265688592d9d897388f6939c79bf8", size = 23406, upload-time = "2024-11-05T20:51:13.472Z" },
+]
+
+[[package]]
 name = "langchain-text-splitters"
 version = "0.3.9"
 source = { registry = "https://pypi.org/simple" }
@@ -1570,6 +1584,7 @@ dependencies = [
     { name = "langchain-community" },
     { name = "langchain-mcp-adapters" },
     { name = "langchain-openai" },
+    { name = "langchain-qdrant" },
     { name = "langchain-text-splitters" },
     { name = "langgraph" },
     { name = "python-dotenv" },
@@ -1601,6 +1616,7 @@ requires-dist = [
     { name = "langchain-community", specifier = ">=0.3.0" },
     { name = "langchain-mcp-adapters", specifier = ">=0.1.0" },
     { name = "langchain-openai", specifier = ">=0.2.0" },
+    { name = "langchain-qdrant", specifier = ">=0.2.0" },
     { name = "langchain-text-splitters", specifier = ">=0.3.0" },
     { name = "langgraph", specifier = ">=0.2.0" },
     { name = "pytest", marker = "extra == 'dev'", specifier = ">=8.0.0" },

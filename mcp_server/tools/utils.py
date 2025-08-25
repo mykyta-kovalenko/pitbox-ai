@@ -7,7 +7,7 @@ import httpx
 from pydantic import BaseModel
 
 # Configuration
-WEB_SERVER_URL = os.getenv("WEB_SERVER_URL", "http://localhost:5000")
+WEB_SERVER_URL = os.getenv("WEB_SERVER_URL", "http://localhost:8000")
 API_TIMEOUT = 30
 
 

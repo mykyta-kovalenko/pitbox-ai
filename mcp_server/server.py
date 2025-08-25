@@ -1,8 +1,17 @@
 """TrackHouse MCP Server - Integrated with edge_server/web_server."""
 
 import argparse
+import os
 import sys
 from pathlib import Path
+
+# Suppress FastMCP banner and verbose output
+os.environ["FASTMCP_DISABLE_BANNER"] = "1"
+os.environ["FASTMCP_QUIET"] = "1"
+
+# Suppress FastMCP logging when used in stdio mode
+import logging
+logging.getLogger("fastmcp").setLevel(logging.ERROR)
 
 from fastmcp import FastMCP
 
@@ -282,8 +291,10 @@ if __name__ == "__main__":
 
     args = parser.parse_args()
 
-    # Print server info
-    print_server_info(transport=args.transport, host=args.host, port=args.port)
+    # Only print server info when running standalone (not when called from agents)
+    # Check if we're being run directly vs imported
+    if sys.stdin.isatty():  # Running in terminal
+        print_server_info(transport=args.transport, host=args.host, port=args.port)
 
     if args.transport == "http":
         mcp.run(transport="http", host=args.host, port=args.port)
