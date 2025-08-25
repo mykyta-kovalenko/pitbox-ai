@@ -1,12 +1,10 @@
 """Simple NASCAR Pit Box Agent - Basic Q&A with tool routing"""
 
-import asyncio
 from functools import lru_cache
 from typing import Any, Dict, Literal
 
 from langchain_core.messages import ToolMessage
 from langgraph.graph import END, StateGraph
-from langgraph.prebuilt import ToolNode
 
 from ..models import get_chat_model
 from ..state import PitBoxState

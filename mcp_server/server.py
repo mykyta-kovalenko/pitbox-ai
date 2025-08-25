@@ -11,6 +11,7 @@ os.environ["FASTMCP_QUIET"] = "1"
 
 # Suppress FastMCP logging when used in stdio mode
 import logging
+
 logging.getLogger("fastmcp").setLevel(logging.ERROR)
 
 from fastmcp import FastMCP
