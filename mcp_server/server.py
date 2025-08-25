@@ -1,6 +1,6 @@
 """TrackHouse MCP Server - Integrated with edge_server/web_server."""
 
-import asyncio
+import argparse
 import sys
 from pathlib import Path
 
@@ -199,52 +199,93 @@ def create_mcp_server() -> FastMCP:
     return mcp
 
 
-async def main():
-    """Run the MCP server."""
+def print_server_info(
+    transport: str = "stdio", host: str = "127.0.0.1", port: int = 8000
+):
+    """Print server information and available tools.
+
+    Args:
+        transport: Transport type - 'stdio' (default) or 'http'
+        host: Host for HTTP transport
+        port: Port for HTTP transport
+    """
     print("=" * 60)
     print("TrackHouse MCP Server")
     print("=" * 60)
-    print(f"\nConnecting to web server at: {WEB_SERVER_URL}")
-    
-    # Test connection
-    health = await check_system_health()
-    if "error" in health:
-        print(f"\n⚠️  Web server not responding: {health['error']}")
-        print("\nPlease ensure the edge server is running:")
-        print("  cd edge_server")
-        print("  docker-compose up")
-    else:
-        print(f"✓ System health: {health['status']}")
-    
+    print(f"\nTransport: {transport.upper()}")
+    if transport == "http":
+        print(f"Endpoint: http://{host}:{port}")
+    print(f"Connecting to web server at: {WEB_SERVER_URL}")
+
+    # Note: Can't test connection here since it's not async
+    print("\nNote: Web server connection will be tested when tools are called")
+
     print("\n" + "=" * 60)
     print("Available MCP Tools:")
     print("=" * 60)
-    
+
     # List categories of tools
     tools = {
         "System": ["check_system_health", "get_vehicle_id"],
-        "Car Data": ["get_car_position", "get_all_positions", "get_car_rank", 
-                    "get_lap_time", "get_best_lap_time", "get_average_lap_time"],
+        "Car Data": [
+            "get_car_position",
+            "get_all_positions",
+            "get_car_rank",
+            "get_lap_time",
+            "get_best_lap_time",
+            "get_average_lap_time",
+        ],
         "Pit Stops": ["get_pit_events", "get_pit_times", "get_tire_data"],
-        "Race Status": ["get_current_flag", "get_all_flags", "get_current_lap", 
-                       "get_all_laps", "get_starting_grid", "get_track_info"],
+        "Race Status": [
+            "get_current_flag",
+            "get_all_flags",
+            "get_current_lap",
+            "get_all_laps",
+            "get_starting_grid",
+            "get_track_info",
+        ],
         "Content": ["get_driver_info", "get_all_drivers", "get_team_info"],
         "Telemetry": ["get_telemetry_channels"],
-        "Analysis": ["analyze_race_leader", "analyze_pit_strategy", "compare_lap_times"]
+        "Analysis": [
+            "analyze_race_leader",
+            "analyze_pit_strategy",
+            "compare_lap_times",
+        ],
     }
-    
+
     for category, tool_list in tools.items():
         print(f"\n{category}:")
         for tool in tool_list:
             print(f"  • {tool}")
-    
+
     print("\n" + "=" * 60)
-    print("MCP server is ready for connections!")
+    print(f"MCP server is ready for connections via {transport.upper()}!")
     print("=" * 60)
-    
-    # Run the MCP server
-    await mcp.run()
 
 
 if __name__ == "__main__":
-    asyncio.run(main())
+    parser = argparse.ArgumentParser(description="TrackHouse MCP Server")
+    parser.add_argument(
+        "--transport",
+        choices=["stdio", "http"],
+        default="stdio",
+        help="Transport method (default: stdio)",
+    )
+    parser.add_argument(
+        "--host",
+        default="127.0.0.1",
+        help="Host for HTTP transport (default: 127.0.0.1)",
+    )
+    parser.add_argument(
+        "--port", type=int, default=8000, help="Port for HTTP transport (default: 8000)"
+    )
+
+    args = parser.parse_args()
+
+    # Print server info
+    print_server_info(transport=args.transport, host=args.host, port=args.port)
+
+    if args.transport == "http":
+        mcp.run(transport="http", host=args.host, port=args.port)
+    else:
+        mcp.run()  # Default stdio

@@ -93,7 +93,9 @@ class NASCARKnowledgeRAG:
             return
 
         # Create prompt template
-        rag_system_prompt = """You are a knowledgeable NASCAR pit box assistant. Use the provided context to answer questions about NASCAR racing, Trackhouse Racing team, terminology, and tracks.
+        rag_system_prompt = """You are a knowledgeable NASCAR pit box assistant.
+Use the provided context to answer questions about NASCAR racing, Trackhouse Racing
+team, terminology, and tracks.
 
 IMPORTANT GUIDELINES:
 - Only use information from the provided context

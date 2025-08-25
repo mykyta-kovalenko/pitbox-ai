@@ -21,3 +21,8 @@ SIMULATOR_BASE_URL = os.getenv("SIMULATOR_BASE_URL", "http://127.0.0.1:8000")
 
 # Knowledge base configuration
 KNOWLEDGE_BASE_PATH = os.getenv("KNOWLEDGE_BASE_PATH", "app/knowledge")
+
+# MCP Server configuration
+MCP_TRANSPORT = os.getenv("MCP_TRANSPORT", "stdio")  # 'stdio' or 'http'
+MCP_HOST = os.getenv("MCP_HOST", "127.0.0.1")
+MCP_PORT = int(os.getenv("MCP_PORT", "8000"))
