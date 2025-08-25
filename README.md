@@ -34,10 +34,18 @@ mcp_server/              # MCP (Model Context Protocol) server
 
 evaluation/              # Evaluation and testing
 ├── golden_dataset.json   # Q&A pairs for validation
-└── eval_harness.py       # Automated evaluation
+├── eval_harness.py       # Automated evaluation
+├── ragas_evaluation.py   # RAGAS reliability testing
+└── ragas_distribution.png # RAGAS metrics visualization
 
 tests/                   # Test suite
 └── test_rag_knowledge.py  # RAG system tests
 
 web_client/              # Demo interface (TODO: Next.js)
 ```
+
+## RAGAS Evaluation Results
+
+![RAGAS Metrics Distribution](assets/ragas_distribution.png)
+
+Reliability testing shows stable performance across all RAGAS metrics with low variance (CV < 0.015). Chart shows individual trial scores (×), mean values (♦), and summary statistics for each metric.

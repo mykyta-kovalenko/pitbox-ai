@@ -3,7 +3,9 @@
 
 import asyncio
 import sys
-from langchain_core.messages import HumanMessage, AIMessage
+
+from langchain_core.messages import AIMessage, HumanMessage
+
 from app.graphs.simple_pitbox import graph
 
 
@@ -19,7 +21,7 @@ async def main():
         print("\nUsing default question: What is NASCAR?")
         question = "What is NASCAR?"
     
-    print(f"\n🏁 NASCAR Pit Box Agent")
+    print("\n🏁 NASCAR Pit Box Agent")
     print("=" * 60)
     print(f"Question: {question}")
     print("=" * 60)

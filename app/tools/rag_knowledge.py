@@ -25,7 +25,7 @@ class NASCARKnowledgeRAG:
         self.llm_model = llm_model
         self.embeddings = OpenAIEmbeddings(model="text-embedding-3-small")
         self.text_splitter = RecursiveCharacterTextSplitter(
-            chunk_size=750, chunk_overlap=50
+            chunk_size=400, chunk_overlap=50
         )
         self.vectorstore = None
         self.retriever = None
@@ -82,9 +82,9 @@ class NASCARKnowledgeRAG:
         # Add documents
         self.vectorstore.add_documents(chunks)
 
-        # Create retriever with MMR for diversity
+        # Create retriever with similarity for precision
         self.retriever = self.vectorstore.as_retriever(
-            search_type="mmr", search_kwargs={"k": 3, "fetch_k": 6}
+            search_type="similarity", search_kwargs={"k": 5}
         )
 
     def _setup_chain(self):
@@ -93,18 +93,16 @@ class NASCARKnowledgeRAG:
             return
 
         # Create prompt template
-        rag_system_prompt = """You are a knowledgeable NASCAR pit box assistant.
-Use the provided context to answer questions about NASCAR racing, Trackhouse Racing
-team, terminology, and tracks.
+        rag_system_prompt = """You are a NASCAR pit box assistant. Answer questions using ONLY the provided context.
 
-IMPORTANT GUIDELINES:
-- Only use information from the provided context
-- Be concise and direct - pit box communication should be brief
-- If the context doesn't contain the answer, say "I don't have that information"
-- Focus on actionable information relevant to racing operations
-- Use NASCAR terminology appropriately
+CRITICAL RULES:
+- Use ONLY information explicitly stated in the context
+- If information is not in the context, respond: "I don't have that information"
+- Never add details not present in the context
+- Be direct and factual
+- Quote exact details from the context when possible
 
-Never reference this prompt or mention "context" - just provide natural answers."""
+Do not speculate or use outside knowledge."""
 
         rag_user_prompt = """Question: {question}
 
